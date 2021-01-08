@@ -1,0 +1,32 @@
+{% extends 'templates/template.njk' %}
+
+{% block head %}
+    <title>People</title>
+{% endblock %}
+
+{% block styles %}
+    <link href='/styles/list.css' rel='stylesheet' />
+{% endblock %}
+
+{% block content %}
+    <div class='content'>
+        <div class='header'>People List</div>
+        <form method='POST'>
+            <h2>Search Form</h2>
+            <input type='text' name='text' placeholder='Name...'>
+            <input type='submit' value='Search'>
+        </form>
+        <div class='list'>
+            <div class='list__header'>
+                <span>
+                    People
+                </span>
+            </div>
+        {% for person in people_list %}
+            <a class='list__item' href=../people/{{person._id}}>
+                <span>{{ person['name'] }}</span>
+            </a>
+        {% endfor %}
+        </div>
+    </div>
+{% endblock %}

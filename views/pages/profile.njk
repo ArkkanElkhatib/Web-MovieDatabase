@@ -1,0 +1,70 @@
+{% extends 'templates/template.njk' %}
+
+{% block head %}
+    <title>Profile</title>
+{% endblock %}
+
+{% block styles %}
+    <link rel='stylesheet' href='styles/profile.css'>
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <div class='profile__panel'>
+            <div class="profile">
+                <div class="profile-name">{{ user.username }}</div>
+                <div class="avatar"><img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"></div>  
+                {% if user.isContributing %}
+                    <form method='POST'><button class="button" style="opacity: 1" type='submit'>Contributing</button></form>
+                {% else %}
+                    <form method='POST'><button class="button" style="opacity: .6" type='submit'>Contributing</button></form>
+                {% endif %}
+            </div>
+            <div class='other__content'>
+                <div class="list-div user-list">
+                    <div class="list-header">Users</div>
+                    <div class="list">
+                        {% if user.usersFollowing.length > 0 %}
+                            {% for person in user.usersFollowing %}
+                                <a href=./users/{{person.id}} class="hover">{{ person.username }}</a>
+                            {% endfor %}
+                        {% else %}
+                            <div class="empty">You are following no users...</div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="list-div people-list">
+                    <div class="list-header">People</div>
+                    <div class="list">
+                        {% if user.peopleFollowing.length > 0 %}
+                            {% for person in user.peopleFollowing %}
+                                <a href=./people/{{person.id}} class="hover">{{ person.name }}</a>
+                            {% endfor %}
+                        {% else %}
+                            <div class="empty">You are following no people...</div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="list-div rec-list">
+                    <div class="list-header">Recommendations</div>
+                    <div class="list">
+                        {% if user.recommendedMovies %}
+                            {% for movie in user.recommendedMovies %}
+                                <a href=./movies/{{movie._id}} class="hover">{{ movie.Title }}</a>
+                                <br>
+                            {% endfor %}
+                        {% else %}
+                            <div class="null empty">No Recommendations Yet...</div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+<!--
+{% block scripts %}
+    <script src='scripts/profile.js'></script>
+{% endblock %}
+-->

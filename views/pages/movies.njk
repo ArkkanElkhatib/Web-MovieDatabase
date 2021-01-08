@@ -1,0 +1,54 @@
+{% extends 'templates/template.njk' %}
+
+{% block head %}
+    <title>Movies</title>
+{% endblock %}
+
+{% block styles %}
+    <link href='/styles/list.css' rel='stylesheet' />
+{% endblock %}
+
+{% block content %}
+    <div class='content'>
+        <div class='header'>Movie List</div>
+        <form method='POST'>
+            <h2>Search Form</h2>
+            <input type='text' name='text' placeholder='Search...'>
+            <div>
+                <input type='radio' name='queryType' id='title' value='title' checked>
+                <label for='title'>By Title</label>
+            </div>
+            <div>
+                <input type='radio' name='queryType' id='genre' value='genre'>
+                <label for='genre'>By Genre</label>
+            </div>
+            <input type='submit' value='Search'>
+        </form>
+        <div class='list'>
+            <div class='list__header'>
+                <span>
+                    Title
+                </span>
+                <span>
+                    Year
+                </span>
+                <span>
+                    Rating
+                </span>
+            </div>
+        {% for movie in movie_list %}
+            <a class='list__item' href=../movies/{{movie._id}}>
+                <span>
+                    {{ movie.Title }}
+                </span>
+                <span>
+                    {{ movie.Year }}
+                </span>
+                <span>
+                    {{ movie.imdbRating }} / 10
+                </span>
+            </a>
+        {% endfor %}
+        </div>
+    </div>
+{% endblock %}

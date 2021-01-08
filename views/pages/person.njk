@@ -1,0 +1,67 @@
+{% extends 'templates/template.njk' %}
+
+{% block head %}
+    <title>{{ person.name }}</title>
+{% endblock %}
+
+{% block styles %}
+    <link rel='stylesheet' href='/styles/person.css'>
+{% endblock %}
+
+{% block content %}
+    <div class='content'> 
+        <div class='profile__panel'>
+            <div class="profile">
+                <div class="profile-name">{{ person.name }}</div>
+                <div class="avatar"><img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"></div> 
+                {% if isFollowing %}
+                    <form method='POST'><button style='opacity: .6;' class="follow" type='submit'>Follow</button></form>
+                {% else %}
+                    <form method='POST'><button style='opacity: 1;' class="follow" type='submit'>Unfollow</button></form>
+                {% endif %}
+            </div>
+            <div class='other__content'>
+                <div class="list-div following-list">
+                    <div class="list-header">Works</div>
+                    <div class="list">
+                        {% if person.works.length > 0 %}
+                            {% for work in person.works %}
+                                <a href=../movies/{{work.uuid}} class="hover">{{ work.movie_title }}</a>
+                            {% endfor %}
+                        {% else %}
+                            <div class="null">This User Has No Works...</div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="list-div review-list">
+                    <div class="list-header">Reviews</div>
+                    <div class="list">
+                        {% if person.reviews %}
+                            {% for review in person.reviews %}
+                                <div class="hover">{{ review }}</div>
+                            {% endfor %}
+                        {% else %}
+                            <div class="null">This User Currently Has No Reviews...</div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="list-div review-list">
+                    <div class="list-header">Frequent</div>
+                    <div class="list">
+                        {% if person.frequent %}
+                            {% for p in person.frequeny %}
+                                <div class="hover">{{ p }}</div>
+                            {% endfor %}
+                        {% else %}
+                            <div class="null">No Information On Frequeny Collaborators</div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src='../scripts/person.js'></script>
+{% endblock %}

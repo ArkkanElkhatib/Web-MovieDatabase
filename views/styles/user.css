@@ -1,0 +1,100 @@
+.content {
+    position: absolute;
+    top: 8vh;
+    height: max(92vh, fit-content);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    padding-top: 50px;
+    gap: 20px;
+}
+
+.profile__panel {
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 50px 20px;
+    height: 83vh;
+    width: 95%;
+    gap: 40px;
+    background-color: var(--quad-color);
+}
+
+.profile {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 20px 5px;
+    align-items: center;
+    gap: 15px;
+    border: 1px solid var(--main-color);
+    border-radius: 15px;
+}
+
+.avatar {
+    height: 200px;
+    width: 200px;
+}
+
+.avatar > img {
+    height: 100%;
+    width: 100%;
+}
+
+.other__content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    gap: 15px;
+    height: calc(100% + 20px);
+}
+
+.list-div {
+    flex: calc(1/3);
+    background-color: var(--tertiary-color);
+    height: 80%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    height: 95%;
+}
+
+.list{
+    border: 1px solid var(--main-color);
+    height: 250px;
+    width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    font-size: 20px;
+}
+
+.hover:hover {
+    cursor: pointer;
+    transition: all 0.2s ease-in;
+    color: var(--secondary-color);
+    background-color: var(--main-color);
+    font-size: 21px;
+}
+
+.follow {
+    font-size: 16px;
+    padding: 5px 8px;
+    color: var(--main-color);
+    background-color: var(--tertiary-color);
+    border-radius: 5px;
+    border: none;
+}
+
+.follow:hover {
+    cursor: pointer;
+}

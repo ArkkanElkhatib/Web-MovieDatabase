@@ -1,0 +1,20 @@
+{% extends 'templates/template.njk' %}
+
+{% block head %}
+    <title>Logout</title>
+{% endblock %}
+
+{% block styles %}
+    <link href='/styles/logout.css' rel='stylesheet' />
+{% endblock %}
+
+{% block content %}
+    <div class='content'>
+        <div class='message'>
+            Click The Button Below To Confirm Logout
+        </div>
+        <form method='POST'>
+            <input class='button' type='submit' value='Logout'>
+        </form>
+    </div>
+{% endblock %}

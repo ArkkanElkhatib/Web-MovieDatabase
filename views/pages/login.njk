@@ -1,0 +1,22 @@
+{% extends 'templates/template.njk' %}
+
+{% block head %}
+    <title>Login</title>
+{% endblock %}
+
+{% block styles %}
+    <link href='/styles/login.css' rel='stylesheet' />
+{% endblock %}
+
+{% block content %}
+    <div class='content'>
+        <form method='POST'>
+            <h1>Login To Your Account</h1>
+            <input type='text' name='username' placeholder='Username...' />        
+            <input type='password' name='password' placeholder='Password...' />
+            <input type='submit' value='Login' />
+            <span><i>or</i></span>
+            <a class='create' href='/create'>Create Your Account</a>
+        </form>
+    </div>
+{% endblock %}

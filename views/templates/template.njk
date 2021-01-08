@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    {% block head %}  
+        <title>Template</title>
+    {% endblock %}
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap" rel="stylesheet"> 
+    <link href='/styles/template.css' rel='stylesheet' >
+    {% block styles %}
+
+    {% endblock %}
+<head>
+<body>
+    <div class='nav'>
+        <a class='nav__logo' href='/home'>ArkDB</a>
+        <div class='nav__links'>
+            <a href='/movies'>Movies</a>
+            <a href='/people'>People</a>
+            <a href='/users'>Users</a>
+            {% if loggedin %}
+                <a href='/profile'>Profile</a>
+                <a href='/logout'>Logout</a>
+            {% else %}
+                <a href='/login'>Login</a>
+            {% endif %}
+        </div>
+    </div>
+
+    {% block content %}
+        <h1>This is just a template</h1>
+    {% endblock %}
+
+    {% block scripts %}
+        <script>
+            console.log('This page does not include any scripts');
+        </script>
+    {% endblock %}
+</body>
+</html>

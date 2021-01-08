@@ -1,0 +1,67 @@
+{% extends 'templates/template.njk' %}
+
+{% block head %}
+    <title>{{ movie['Title'] }}</title>
+{% endblock %}
+
+{% block styles %}
+    <link href='/styles/movie.css' rel='stylesheet' />
+{% endblock %}
+
+{% block content %}
+    <div class='content'>
+        <div class='movie__panel'>
+            <div class='movie__info'>
+                <div class='movie__poster'>
+                    <div>{{ movie.Title }}</div>
+                    <img src={{movie.Poster}} alt='movie poster' />
+                </div>
+                <div class='movie__details'>
+                    <div class='misc__info'>
+                        <div>Rating: {{ movie.imdbRating }}</div>
+                        <div>Released: {{ movie.Released }}</div>
+                        <div>Director: {{ movie.Director }}</div>
+                        <div>Runtime: {{ movie.Runtime }}</div>
+                    </div>
+                    <div class='plot__info'>
+                        <p>Plot: <br />{{ movie.Plot }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class='other__stuff'>
+                <div class='list__container genres'>
+                    <div class='header'>Genre</div>
+                    <div class='list'>
+                        {% for genre in movie.Genre %}
+                            <a href='../movies?genre={{genre}}'>{{ genre }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class='list__container people'>
+                    <div class='header'>People</div>
+                    <div class='list'>
+                        {% for person in movie.Writer %}
+                            <a href='../people?name={{person}}'>{{ person }}</a>
+                        {% endfor %}
+                        {% for person in movie.Actors %}
+                            <a href='../people?name={{person}}'>{{ person }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class='list__container reviews'>
+                    <div class='header'>Reviews</div>
+                    <div class='list'>
+                        <a href=/review/{{movie._id}} style='opacity: .5;' >+</a>
+                        {% if movie.Reviews.length > 0 %}
+                            {% for review in movie.Reviews %}
+                                <a href=../users/{{review.user}} >By: {{review.username}} | {{ review.text }}</a>
+                            {% endfor %}
+                        {% else %}
+                            <div class='null'>There are no reviews...</div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

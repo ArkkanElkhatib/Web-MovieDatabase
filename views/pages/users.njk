@@ -1,0 +1,33 @@
+{% extends 'templates/template.njk' %}
+
+{% block head %}
+    <title>Users</title>
+{% endblock %}
+
+{% block styles %}
+    <link href='/styles/list.css' rel='stylesheet' />
+{% endblock %}
+
+{% block content %}
+    <div class='content'>
+        <div class='header'>User List</div>
+        <form method='POST'>
+            <h2>Search Form</h2>
+            <input type='text' name='text' placeholder='Username...'>
+            <input type='submit' value='Search'>
+        </form>
+        <div class='list'>
+            <div class='list__header'>
+                <span>
+                    Usernames
+                </span>
+            </div>
+        {% for user in user_list %}
+            <a class='list__item' href=../users/{{user._id}}>
+                <span>{{ user.username }}</span>
+            </a>
+        {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+

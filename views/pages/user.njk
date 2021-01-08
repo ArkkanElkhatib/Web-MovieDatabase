@@ -1,0 +1,57 @@
+{% extends 'templates/template.njk' %}
+
+{% block head %}
+    <title>{{ data.username }}</title>
+{% endblock %}
+
+{% block styles %}
+    <link rel='stylesheet' href='/styles/user.css'>
+{% endblock %}
+
+{% block content %}
+    <div class='content'>
+        <div class='profile__panel'>
+            <div class="profile">
+                <div class="profile-name">{{ data.username }}</div>
+                <div class="avatar"><img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"></div> 
+                {% if isFollowing %}
+                    <form method='POST'><button style='opacity: .6;' class="follow" type='submit'>Follow</button></form>
+                {% else %}
+                    <form method='POST'><button style='opacity: 1;' class="follow" type='submit'>Unfollow</button></form>
+                {% endif %}
+            </div>
+            <div class='other__content'>
+                <div class="list-div following-list">
+                    <div class="list-header">People Following</div>
+                    <div class="list">
+                        {% if data.peopleFollowing.length > 0 %}
+                            {% for person in data.peopleFollowing %}
+                                <a href=../people/{{person.id}} class="hover">{{ person.name }}</a>
+                            {% endfor %}
+                        {% else %}
+                            <div class="null">This User Is Not Following Anybody...</div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="list-div review-list">
+                    <div class="list-header">Reviews</div>
+                    <div class="list">
+                        {% if data.reviews.length > 0 %}
+                            {% for review in data.reviews %}
+                                <a class='hover' style='line-height: 0.8;' href=../movies/{{review.movieID}} >For: {{review.movieName}} | {{ review.text }}</a>
+                                <br>
+                            {% endfor %}
+                        {% else %}
+                            <div class="null">This User Currently Has No Reviews...</div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+<!--
+{% block scripts %}
+    <script src='../scripts/user.js'></script>
+{% endblock %}
+-->

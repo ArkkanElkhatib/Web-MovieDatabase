@@ -1,0 +1,25 @@
+{% extends 'templates/template.njk' %}
+
+{% block head %}
+    <title>Home</title>
+{% endblock %}
+
+{% block styles %}
+    <link href='/styles/index.css' rel='stylesheet' />
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <div class='text'>
+            <div class='text__content'>
+                <h2>Welcome To ArkDB</h2>
+                <h3>A Database Of Movies And The People To Do With Said Movies</h3>
+                <a href='/create'>Create An Account</a>
+            </div>
+        </div>
+        <img
+        src="https://images.unsplash.com/photo-1524712245354-2c4e5e7121c0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1489&q=80"
+        alt="cinema"
+        />
+    </div>
+{% endblock %}

@@ -1,0 +1,32 @@
+.content {
+    position: absolute;
+    top: 8vh;
+    height: max(92vh, fit-content);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    padding-top: 50px;
+    gap: 20px;
+    font-size: 30px;
+}
+
+.message {
+    text-decoration: underline;
+}
+
+.button {
+    color: var(--main-color);
+    background-color: var(--secondary-color);
+    padding: 5px 8px;
+    font-size: 20px;
+}
+
+.button:hover {
+    cursor: pointer;
+    transition: all 0.3s ease-in;
+    color: var(--secondary-color);
+    background-color: var(--main-color);
+    font-size: 22px;
+}
